@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <div className="bg-indigo-700 p">
+    <div className="bg-indigo-700 p-(--spacing-5)">
       <div>
         <div className="flex ">
           <img src="icon-footer-film.png" />
@@ -12,14 +12,14 @@ export const Footer = () => {
           © 2024 Movie Z. All Rights Reserved
         </p>
       </div>
-      <div className="flex ">
+      <div className="flex justify-between pt-(--spacing-7)">
         <div>
-          <p className="text-[#FAFAFA] text-[14px] font-normal leading-5 non-italic pt-4">
+          <p className="text-[#FAFAFA] text-[14px] font-normal leading-5 non-italic pb-4">
             Contact Information
           </p>
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-3 items-center pb-6">
             <img className="w-4 h-4" src="icon-mail.png" />
-            <div className="flex flex-col">
+            <div className="flex flex-col p">
               <p className="text-[#FAFAFA] text-[14px] font-normal leading-5 non-italic ">
                 Email:
               </p>
