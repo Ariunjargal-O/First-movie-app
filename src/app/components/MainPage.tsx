@@ -1,3 +1,5 @@
 export const MainPage = () => {
-  return <div></div>;
+  return <div>
+    
+  </div>;
 };
