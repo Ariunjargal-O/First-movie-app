@@ -10,6 +10,7 @@ import { GenresList } from "./components/GenresList";
 import { MovieType } from "./constants/Type";
 import { Header } from "./components/Header";
 import { NowplayingMovieList } from "./components/NowPlayingMovieList";
+import { MovieDetails } from "./components/MovieDetails";
 
 export default function Home() {
   const [movieList, setMovieList] = useState<MovieType[]>([]);
@@ -17,20 +18,14 @@ export default function Home() {
   return (
     <div>
       <Header></Header>
+      <MovieDetails/>
       <div>
-        <NowplayingMovieList></NowplayingMovieList>
-
+        <NowplayingMovieList />
         {/* <GenresList/> */}
-
-        <UpcomingMovieList
-          // onChange = {(string) => setMovieList([...movielist])}
-          setMovieList={setMovieList}
-          movieList={movieList}
-        />
+        <UpcomingMovieList setMovieList={setMovieList} movieList={movieList} />
         <TopRatedMovieList setMovieList={setMovieList} movieList={movieList} />
+        <PopularMovieList />
       </div>
-      <PopularMovieList />
-
       <Footer></Footer>
     </div>
   );

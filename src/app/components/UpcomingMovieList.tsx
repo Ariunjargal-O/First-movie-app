@@ -12,6 +12,8 @@ type MovieListPropsType = {
 
 import axios from "axios";
 import { ACCESS_TOKEN } from "../constants";
+import { ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const UpcomingMovieList = (props: MovieListPropsType) => {
 
@@ -49,6 +51,20 @@ useEffect(() => {
   return (
     <div>
       {/* <MovieGanList movieList={props.movieList} /> */}
+      <div className="px-(--spacing-5) pt-8 w-full gap-(--spacing-5) flex justify-between ">
+      <p className="text-2xl not-italic font-semibold leading-8">
+            Upcoming
+          </p>
+
+          <Button variant="outline" className="max-w-26 ">
+            <div className="flex">
+              <span className="text-sm not-italic font-medium leading-4">
+                See more
+              </span>
+              <ChevronRight />
+            </div>
+          </Button>
+      </div>
       <div className="px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2">
         {upcomingMovies.map((movie: MovieType) => {
           return (

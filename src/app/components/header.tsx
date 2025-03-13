@@ -38,7 +38,7 @@ export const Header = () => {
         </div>
         <div className="flex gap-3 items-center">
           <div className="flex justify">
-            <Button className=" bg-white w-8 h-8 p-2 border rounded-lg border-solid border-[#E4E4E7]">
+            <Button className=" bg-white w-8 h-8 p-2 border rounded-lg border-solid border-[#E4E4E7] hover:bg-[#f4f4f4]">
               <img className="" src="search.png" />
             </Button>
             <div>
@@ -46,7 +46,7 @@ export const Header = () => {
             </div>
           </div>
           <div>
-            <Button className=" bg-white w-8 h-8 p-2 border rounded-lg border-solid border-[#E4E4E7]" onClick={searchBtn}>
+            <Button className=" bg-white w-8 h-8 p-2 border rounded-lg border-solid border-[#E4E4E7] hover:bg-[#f4f4f4]" onClick={searchBtn}>
               <img className="" src="night-mode.png" />
             </Button>
           </div>

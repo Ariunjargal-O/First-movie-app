@@ -16,6 +16,8 @@ import { instance } from "../axios-instance/utils/axios-instance";
 export const MovieGanList = (movie:MovieType) => {
   const [movieGenLists, setMoveiGanList]=useState([])
 
+  
+
 
  
 

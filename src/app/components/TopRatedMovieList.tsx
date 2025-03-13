@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { ACCESS_TOKEN, BASE_IMAGE_URL } from "../constants";
 import { instance } from "../axios-instance/utils/axios-instance";
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
 type MovieListPropsType = {
   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
@@ -44,6 +46,20 @@ export const TopRatedMovieList = (props: MovieListPropsType) => {
   return (
     <div>
       {/* <MovieGanList movieList={props.movieList} /> */}
+      <div className="px-(--spacing-5) w-full gap-(--spacing-5) flex justify-between ">
+      <p className="text-2xl not-italic font-semibold leading-8">
+            Top Rated
+          </p>
+
+          <Button variant="outline" className="max-w-26 ">
+            <div className="flex">
+              <span className="text-sm not-italic font-medium leading-4">
+                See more
+              </span>
+              <ChevronRight />
+            </div>
+          </Button>
+      </div>
       <div className="px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2">
         {topRatedMovies.map((movie: MovieType) => {
           return (
