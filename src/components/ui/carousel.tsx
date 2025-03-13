@@ -18,6 +18,7 @@ type CarouselProps = {
   opts?: CarouselOptions
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
+  Autoplay?: number, 
   setApi?: (api: CarouselApi) => void
 }
 
