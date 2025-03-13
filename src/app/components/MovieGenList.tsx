@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { MovieType } from "./constants/type";
+import { MovieType } from "../constants/Type";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-type MovieListPropsType = {
-  movieList: MovieType[];
+type GenresListType = {
+  genreMovieList: GenresListType[];
 };
 
 import axios from 'axios';
@@ -13,7 +13,7 @@ import { instance } from "../axios-instance/utils/axios-instance";
 
 
 
-export const MovieGanList = () => {
+export const MovieGanList = (movie:MovieType) => {
   const [movieGenLists, setMoveiGanList]=useState([])
 
 
@@ -22,7 +22,7 @@ export const MovieGanList = () => {
 
   return (
     <div>
-      {props.movieList.map((movie: MovieType) => (
+      {movieGenLists.map((movie: MovieType) => (
         <div className="flex justify-between items-center py-(--spacing-8)">
           <p className="text-2xl not-italic font-semibold leading-8">
             {movie.original_language}

@@ -1,7 +1,7 @@
 "use client";
 import { Dispatch, SetStateAction } from "react";
-import { MovieType } from "./axios-instance/utils/type";
-import { MovieGanList } from "./MovieGenList";
+import { MovieType } from "../constants/Type";
+// import { MovieGanList } from "..components/MovieGenList";
 import { useEffect, useState } from "react";
 
 

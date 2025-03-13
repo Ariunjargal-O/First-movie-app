@@ -1,66 +1,42 @@
-"use client"
-import { Dispatch, SetStateAction } from "react";
-import { MovieType } from "../constants/Type";
-import { ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import * as React from "react";
-import { EmblaPluginType } from "embla-carousel";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-import axios from 'axios';
-
-type Proptype = {
-  plugins?: EmblaPluginType[];
-};
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { instance } from "../axios-instance/utils/axios-instance";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
-import { instance } from "../axios-instance/utils/axios-instance";
+import Autoplay from "embla-carousel-autoplay";
+import { MovieType } from "../constants/Type";
+import { Button } from "@/components/ui/button";
 
-// type MovieType = {
-//   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
-//   movieList: MovieType[];
-// };
+export const NowplayingMovieList = () => {
+  const [nowPlaying, setNowPlayingMovie] = useState([]);
 
-// type MovieListPropsType = {  setMovieList: Dispatch<SetStateAction<MovieType[]>>;  movieList: MovieType[];};
+  // const options = {
+  //   method: 'GET',
+  //   url: 'https://api.themoviedb.org/3/movie/now_playing',
+  //   params: {language: 'en-US', page: '1'},
+  //   headers: {
+  //     accept: 'application/json',
+  //     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmFlZjQwNDEzODJiOWVjMWYzOGNhYWJmMTU3NjYyMyIsIm5iZiI6MTc0MTU3OTQ3Mi4zNTY5OTk5LCJzdWIiOiI2N2NlNjRkMDU5YWUwM2VmZTMyYWE5ZTAiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.JaSdOfIvK_7c048Nv1v_7KpiphyE5h65KzRmJviVonY'
+  //   }
+  // };
 
-
-
-
-
-export const UpcomingMovieList = (props: MovieListPropsType) => {
-
- 
-  const [mainPageMoveis, setMainPageMovie] = React.useState([])
-
-
-
-  const options = {
-    method: 'GET',
-    url: 'https://api.themoviedb.org/3/movie/now_playing',
-    params: {language: 'en-US', page: '1'},
-    headers: {accept: 'application/json'}
+  const getNowPlayingMovieList = async () => {
+    const nowplayingMovieList = await instance.get("/movie/now_playing");
+    console.log(nowplayingMovieList);
+    setNowPlayingMovie(nowPlaying);
   };
-  
-const getMainPageMovieList = async () => {
-  const nowplaying = await instance.get("/movie/now_playing")
-  console.log(nowplaying)
-  setMainPageMovie(mainPageMoveis)
-}
 
-React.useEffect(() => {
-  getMainPageMovieList()
-},[])
+  useEffect(() => {
+    getNowPlayingMovieList();
+  }, []);
 
   return (
     <div>
       <Carousel
-      opts={{loop:true}}
+        opts={{ loop: true }}
         plugins={[
           Autoplay({
             delay: 3000,
@@ -68,7 +44,7 @@ React.useEffect(() => {
         ]}
       >
         <CarouselContent>
-          {props.movieList.map((movie: MovieType) => {
+          {nowPlaying.map((movie: MovieType) => {
             return (
               <CarouselItem key={movie.id}>
                 <div>

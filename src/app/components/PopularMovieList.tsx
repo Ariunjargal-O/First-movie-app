@@ -1,22 +1,23 @@
+"use client"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ACCESS_TOKEN, BASE_IMAGE_URL } from "../constants";
 import { instance } from "../axios-instance/utils/axios-instance";
-import { MovieType } from "./constants/type";
+import { MovieType } from "../constants/Type";
 
 export const PopularMovieList = () => {
   const [popularMovies, setPopularMovieList] = useState([]);
 
-  const options = {
-    method: "GET",
-    url: "https://api.themoviedb.org/3/movie/popular",
-    params: { language: "en-US", page: "1" },
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmFlZjQwNDEzODJiOWVjMWYzOGNhYWJmMTU3NjYyMyIsIm5iZiI6MTc0MTU3OTQ3Mi4zNTY5OTk5LCJzdWIiOiI2N2NlNjRkMDU5YWUwM2VmZTMyYWE5ZTAiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.JaSdOfIvK_7c048Nv1v_7KpiphyE5h65KzRmJviVonY",
-    },
-  };
+  // const options = {
+  //   method: "GET",
+  //   url: "https://api.themoviedb.org/3/movie/popular",
+  //   params: { language: "en-US", page: "1" },
+  //   headers: {
+  //     accept: "application/json",
+  //     Authorization:
+  //       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmFlZjQwNDEzODJiOWVjMWYzOGNhYWJmMTU3NjYyMyIsIm5iZiI6MTc0MTU3OTQ3Mi4zNTY5OTk5LCJzdWIiOiI2N2NlNjRkMDU5YWUwM2VmZTMyYWE5ZTAiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.JaSdOfIvK_7c048Nv1v_7KpiphyE5h65KzRmJviVonY",
+  //   },
+  // };
 
   const getPopularMovieList = async () => {
     const popularMovieList = await instance.get('/movie/top_rated')
