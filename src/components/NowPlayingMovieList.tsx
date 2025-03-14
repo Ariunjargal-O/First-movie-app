@@ -8,9 +8,14 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { MovieType } from "../constants/Type";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
+import { Dispatch, SetStateAction } from "react";
+type MovieListPropsType = {
+  setMovieList: Dispatch<SetStateAction<MovieType[]>>;
+  movieList: MovieType[];
+};
 
-export const NowplayingMovieList = () => {
+export const NowplayingMovieList = (props: MovieListPropsType) => {
   const [nowPlaying, setNowPlayingMovie] = useState([]);
 
   // const options = {
@@ -26,7 +31,7 @@ export const NowplayingMovieList = () => {
   const getNowPlayingMovieList = async () => {
     const nowplayingMovieList = await instance.get("/movie/now_playing");
     console.log(nowplayingMovieList);
-    setNowPlayingMovie(nowPlaying);
+    setNowPlayingMovie(nowplayingMovieList.data.results);
   };
 
   useEffect(() => {
@@ -34,7 +39,7 @@ export const NowplayingMovieList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="h-fit mb-4">
       <Carousel
         opts={{ loop: true }}
         plugins={[
@@ -51,9 +56,9 @@ export const NowplayingMovieList = () => {
                   <div className="flex flex-col w-auto">
                     <img
                       className="w-full"
-                      src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                      src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                     />
-                    <div className="p-(--spacing-5)">
+                    <div className="px-(--spacing-5) pt-(--spacing-5) flex flex-wrap justify-evenly">
                       <div className="flex w-full justify-between gap-[2px]">
                         <div className="flex flex-col">
                           {" "}
@@ -75,16 +80,15 @@ export const NowplayingMovieList = () => {
                         </div>
                       </div>
 
-                      <p className="text-[14px] font-normal not-italic leading-5 py-4">
+                      <p className="text-[14px] font-normal not-italic leading-5 mt-4 text-ellipsis line-clamp-4 max-h-30">
                         {movie.overview}
                       </p>
 
-                      <Button>
+                      <Button className="mt-4">
                         {" "}
                         <img src="icon-play.png" />
                         Watch Trailer
                       </Button>
-                      <p className="text-white ">Watch Trailer</p>
                     </div>
                   </div>
                 </div>

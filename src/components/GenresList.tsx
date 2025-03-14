@@ -28,7 +28,7 @@ export const GenresList = () => {
   },[]);
 
   return (
-    <div className="w-[335px] h-auto p-(--spacing-5) flex-col items-center bg-white border-[1px] border-[#E4E4E7] rounded-2xl mx-5 mt-3">
+    <div className="w-[335px] h-auto p-(--spacing-5) flex-col items-center bg-white border-[3px] border-[#E4E5E9] rounded-2xl mx-5 mt-3 ">
       <div>
         {" "}
         <p className="text-2xl font-semibold not-italic leading-8 pb-1">
