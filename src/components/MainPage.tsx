@@ -21,6 +21,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { instance } from "../axios-instance/utils/axios-instance";
+import Link from "next/link";
 
 // type MovieType = {
 //   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
@@ -70,7 +71,9 @@ React.useEffect(() => {
         <CarouselContent>
           {props.movieList.map((movie: MovieType) => {
             return (
-              <CarouselItem key={movie.id}>
+            <Link >
+            
+            <CarouselItem key={movie.id}>
                 <div>
                   <div className="flex flex-col w-auto">
                     <img
@@ -113,7 +116,8 @@ React.useEffect(() => {
                   </div>
                 </div>
               </CarouselItem>
-            );
+            </Link>
+            )
           })}
         </CarouselContent>
       </Carousel>

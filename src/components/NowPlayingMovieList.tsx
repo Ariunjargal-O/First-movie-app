@@ -10,6 +10,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { MovieType } from "../constants/Type";
 import { Button } from "../components/ui/button";
 import { Dispatch, SetStateAction } from "react";
+import Link from "next/link";
 type MovieListPropsType = {
   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
   movieList: MovieType[];
@@ -30,7 +31,7 @@ export const NowplayingMovieList = (props: MovieListPropsType) => {
 
   const getNowPlayingMovieList = async () => {
     const nowplayingMovieList = await instance.get("/movie/now_playing");
-    console.log(nowplayingMovieList);
+    // console.log(nowplayingMovieList);
     setNowPlayingMovie(nowplayingMovieList.data.results);
   };
 
@@ -52,46 +53,48 @@ export const NowplayingMovieList = (props: MovieListPropsType) => {
           {nowPlaying.map((movie: MovieType) => {
             return (
               <CarouselItem key={movie.id}>
-                <div>
-                  <div className="flex flex-col w-auto">
-                    <img
-                      className="w-full"
-                      src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                    />
-                    <div className="px-(--spacing-5) pt-(--spacing-5) flex flex-wrap justify-evenly">
-                      <div className="flex w-full justify-between gap-[2px]">
-                        <div className="flex flex-col">
+                <Link href={`/nowplaying/${movie.id}`}>
+                  <div>
+                    <div className="flex flex-col w-auto">
+                      <img
+                        className="w-full"
+                        src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                      />
+                      <div className="px-(--spacing-5) pt-(--spacing-5) flex flex-wrap justify-evenly">
+                        <div className="flex w-full justify-between gap-[2px]">
+                          <div className="flex flex-col">
+                            {" "}
+                            <p className="text-[14px] not-italic font-normal leading-5">
+                              Now playing:
+                            </p>
+                            <p className="text-2xl not-italic font-semibold leading-8 ">
+                              {movie.title}
+                            </p>
+                          </div>
+                          <div className="flex">
+                            <img className="w-4 h-4" src="icon-star.png" />
+                            <p className="text-3 font-medium leading-4">
+                              {movie.vote_average}
+                            </p>
+                            <span className="text-3 font-normal leading-4 text-(--text-text-muted-foreground)">
+                              /10
+                            </span>
+                          </div>
+                        </div>
+
+                        <p className="text-[14px] font-normal not-italic leading-5 mt-4 text-ellipsis line-clamp-4 max-h-30">
+                          {movie.overview}
+                        </p>
+
+                        <Button className="mt-4">
                           {" "}
-                          <p className="text-[14px] not-italic font-normal leading-5">
-                            Now playing:
-                          </p>
-                          <p className="text-2xl not-italic font-semibold leading-8 ">
-                            {movie.title}
-                          </p>
-                        </div>
-                        <div className="flex">
-                          <img className="w-4 h-4" src="icon-star.png" />
-                          <p className="text-3 font-medium leading-4">
-                            {movie.vote_average}
-                          </p>
-                          <span className="text-3 font-normal leading-4 text-(--text-text-muted-foreground)">
-                            /10
-                          </span>
-                        </div>
+                          <img src="icon-play.png" />
+                          Watch Trailer
+                        </Button>
                       </div>
-
-                      <p className="text-[14px] font-normal not-italic leading-5 mt-4 text-ellipsis line-clamp-4 max-h-30">
-                        {movie.overview}
-                      </p>
-
-                      <Button className="mt-4">
-                        {" "}
-                        <img src="icon-play.png" />
-                        Watch Trailer
-                      </Button>
                     </div>
                   </div>
-                </div>
+                </Link>
               </CarouselItem>
             );
           })}
