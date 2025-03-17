@@ -53,7 +53,7 @@ export const NowplayingMovieList = (props: MovieListPropsType) => {
           {nowPlaying.map((movie: MovieType) => {
             return (
               <CarouselItem key={movie.id}>
-                <Link href={`/nowplaying/${movie.id}`}>
+                <Link href={`${movie.id}`}>
                   <div>
                     <div className="flex flex-col w-auto">
                       <img

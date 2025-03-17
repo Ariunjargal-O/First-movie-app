@@ -1,5 +1,5 @@
 import { instance } from "@/axios-instance/utils/axios-instance";
-import { MovieDetailsCreditType } from "@/constants/Type";
+import { MovieDetailCreditType } from "@/constants/Type";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -9,9 +9,9 @@ type Props = {
 };
 
 export const MovieDetailsCredit = (props: Props) => {
-  const [movieCredit, setmovieCredit] = useState<MovieDetailsCreditType[]>();
+  const [movieCredit, setmovieCredit] = useState<MovieDetailCreditType[]>();
   const [movieCreditCrew, setMovieCreditCrew] =
-    useState<MovieDetailsCreditType[]>();
+    useState<MovieDetailCreditType[]>();
   const params = useParams();
 
   const getMovieDetailsCredit = async () => {

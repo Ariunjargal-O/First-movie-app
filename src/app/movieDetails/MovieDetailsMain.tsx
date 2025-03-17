@@ -7,13 +7,13 @@ import axios from "axios";
 import { ChevronRight, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ACCESS_TOKEN } from "@/constants";
-import { MovieDetailsType } from "@/constants/Type";
+import { MovieDetailType } from "@/constants/Type";
 import { useParams } from "next/navigation";
 import { instance } from "@/axios-instance/utils/axios-instance";
 
 type MovieListPropsType = {
-  setMovieList: Dispatch<SetStateAction<MovieDetailsType[]>>;
-  movieList: MovieDetailsType[];
+  setMovieList: Dispatch<SetStateAction<MovieDetailType[]>>;
+  movieList: MovieDetailType[];
 };
 
 type Props = {
@@ -21,7 +21,7 @@ type Props = {
 };
 
 export const MovieDetailsMain = (props: MovieListPropsType) => {
-  const [openMovieDetail, setopenMovieDetail] = useState<MovieDetailsType>();
+  const [openMovieDetail, setopenMovieDetail] = useState<MovieDetailType>();
   const params = useParams();
   // console.log(params.id);
 
@@ -52,7 +52,7 @@ export const MovieDetailsMain = (props: MovieListPropsType) => {
             {openMovieDetail?.title}
           </p>
           <p className="text-[14px] not-italic font-normal leading-5">
-            {openMovieDetail?.release_date}
+            {openMovieDetail?.release_date}  {openMovieDetail?.runtime}min
           </p>
         </div>
         <div className="flex items-center gap-1">
@@ -83,11 +83,11 @@ export const MovieDetailsMain = (props: MovieListPropsType) => {
             <Button  className="bg-white border-[1px] border-black rounded-full hover:bg-indigo-400 w-20">
               <img className="w-6 h-6" src="icon-black-play.png"></img>
             </Button>
-          <p className="text-[16px] not-italic font-normal leading-6 text-white">
+          <p className="text-[16px] not-italic font-normal leading-6 text-white ">
             Play Trailer
           </p>
           <p className="text-[16px] not-italic font-normal leading-6 text-white">
-            1223
+  
           </p>
         </div>
       </div>

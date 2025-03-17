@@ -1,8 +1,8 @@
 import { instance } from "@/axios-instance/utils/axios-instance";
 import { Button } from "@/components/ui/button";
 import {
-  MovieDetailsCreditType,
-  MovieDetailsType,
+  MovieDetailCreditType,
+  MovieDetailType,
   MovieType,
 } from "@/constants/Type";
 import { ChevronRight, Key } from "lucide-react";
@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 
 export const MoreLike = () => {
   const params = useParams();
-  const [moreLikeList, setMoreLikeList] = useState<MovieDetailsType[]>();
+  const [moreLikeList, setMoreLikeList] = useState<MovieDetailType[]>();
 
   const getMoreLikeMovieList = async () => {
     const moreLikeMovieList = await instance.get(

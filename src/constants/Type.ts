@@ -20,7 +20,7 @@ export type GenresListType = {
   name: string;
 };
 
-export type MovieDetailsType = {
+export type MovieDetailType = {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: null;
@@ -54,7 +54,7 @@ type Genre = {
   name: string;
 };
 
-export type MovieDetailsCreditType = {
+export type MovieDetailCreditType = {
   adult: boolean;
   cast_id: number;
   character: string;
