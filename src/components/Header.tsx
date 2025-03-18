@@ -3,24 +3,23 @@
 import { Button } from "@/components/ui/button";
 import { GenresList } from "./GenresList";
 import { useState } from "react";
+import { Link } from "lucide-react";
 
 // function vs functional component
-
 
 /* <div className={`${searchButton == "none" ? "hidden" : "block"}`}> */
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isGenreListVisible, setIsGenreListVisible] = useState(false)
+  const [isGenreListVisible, setIsGenreListVisible] = useState(false);
 
   const handleSearch = () => {
     setIsOpen(!isOpen);
   };
 
   const handleGenre = () => {
-    setIsGenreListVisible(!isGenreListVisible)
-  }
-
+    setIsGenreListVisible(!isGenreListVisible);
+  };
 
   return (
     <div>
@@ -48,7 +47,7 @@ export const Header = () => {
           </div>
         </div>
       )}
-      
+
       {isOpen && (
         <div>
           <div className="flex justify-between items-center h-[59px] px-(--spacing-5) gap-2">
@@ -72,7 +71,7 @@ export const Header = () => {
           </div>{" "}
         </div>
       )}
-      <div className="fixed z-50">{isGenreListVisible && <GenresList/>}</div>
+      <div className="fixed z-50">{isGenreListVisible && <GenresList />}</div>
     </div>
   );
 };

@@ -16,11 +16,11 @@ type MovieListPropsType = {
   movieList: MovieDetailType[];
 };
 
-type Props = {
+type Props = MovieListPropsType & {
   id: string | undefined | string[];
 };
 
-export const MovieDetailsMain = (props: MovieListPropsType) => {
+export const MovieDetailsMain = (props: Props) => {
   const [openMovieDetail, setopenMovieDetail] = useState<MovieDetailType>();
   const params = useParams();
   // console.log(params.id);
@@ -52,7 +52,7 @@ export const MovieDetailsMain = (props: MovieListPropsType) => {
             {openMovieDetail?.title}
           </p>
           <p className="text-[14px] not-italic font-normal leading-5">
-            {openMovieDetail?.release_date}  {openMovieDetail?.runtime}min
+            {openMovieDetail?.release_date} {openMovieDetail?.runtime}min
           </p>
         </div>
         <div className="flex items-center gap-1">
@@ -79,16 +79,13 @@ export const MovieDetailsMain = (props: MovieListPropsType) => {
           src={`https://image.tmdb.org/t/p/original/${openMovieDetail?.backdrop_path}`}
         ></img>
         <div className=" absolute flex justify-between bottom-3 left-3 gap-3 items-center">
-
-            <Button  className="bg-white border-[1px] border-black rounded-full hover:bg-indigo-400 w-20">
-              <img className="w-6 h-6" src="icon-black-play.png"></img>
-            </Button>
+          <Button className="bg-white border-[1px] border-black rounded-full hover:bg-indigo-400 w-20">
+            <img className="w-6 h-6" src="icon-black-play.png"></img>
+          </Button>
           <p className="text-[16px] not-italic font-normal leading-6 text-white ">
             Play Trailer
           </p>
-          <p className="text-[16px] not-italic font-normal leading-6 text-white">
-  
-          </p>
+          <p className="text-[16px] not-italic font-normal leading-6 text-white"></p>
         </div>
       </div>
 

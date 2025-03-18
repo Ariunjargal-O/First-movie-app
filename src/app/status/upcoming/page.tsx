@@ -21,33 +21,15 @@ const UpcomingListPage = () => {
 
   return (
     <div>
-        <p className="px-(--spacing-5)  w-full gap-(--spacing-5) flex justify-between text-2xl not-italic font-semibold leading-8">
-        Upcoming</p>
-        <div className="min px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2 ">
-        {upComingMovieList.map((movie:MovieType) => {
-            return(
-                <div>
-                    
-                </div>
-            )
-        })}
-        </div>
-    </div>
-  );
-};
-
-export default UpcomingListPage;
-
-
-/* <p className=" px-(--spacing-5)  w-full gap-(--spacing-5) flex justify-between text-2xl not-italic font-semibold leading-8">
+      <p className="px-(--spacing-5)  w-full gap-(--spacing-5) flex justify-between text-2xl not-italic font-semibold leading-8">
         Upcoming
-      </p>
 
+      </p>
       <div className="min px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2 ">
         {upComingMovieList.map((movie: MovieType) => {
           return (
-            <Link href={`${movie.id}`} key={movie.id}>
-              <div >
+            <div key={movie.id}>
+              {/* <Link href={`/movieDetails/id${movie.id}`}> */}
                 <div
                   key={movie.title}
                   className="bg-[#F4F4F5] rounded-b-lg flex flex-col"
@@ -72,9 +54,13 @@ export default UpcomingListPage;
                     </h1>
                   </div>
                 </div>
-              </div>
-            </Link>
+              {/* </Link> */}
+            </div>
           );
         })}
       </div>
-    </div> */
+    </div>
+  );
+};
+
+export default UpcomingListPage;

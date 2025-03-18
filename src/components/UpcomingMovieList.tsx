@@ -14,6 +14,7 @@ import { ACCESS_TOKEN } from "../constants";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { MovieDetails } from "./MovieDetails";
 
 export const UpcomingMovieList = (props: MovieListPropsType) => {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
@@ -65,7 +66,7 @@ export const UpcomingMovieList = (props: MovieListPropsType) => {
         {upcomingMovies.map((movie: MovieType) => {
           return (
             <div key={movie.id}>
-              <Link href={`${movie.id}`}>
+              <Link href={`/movieDetails/${movie.id}`}>
                 <div
                   key={movie.title}
                   className="bg-[#F4F4F5] rounded-b-lg flex flex-col"

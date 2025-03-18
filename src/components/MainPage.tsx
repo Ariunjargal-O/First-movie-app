@@ -1,6 +1,6 @@
 "use client"
 import { Dispatch, SetStateAction } from "react";
-import { MovieType } from "../constants/Type";
+import { MovieDetailType, MovieType } from "../constants/Type";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import * as React from "react";
@@ -23,30 +23,28 @@ import {
 import { instance } from "../axios-instance/utils/axios-instance";
 import Link from "next/link";
 
-// type MovieType = {
-//   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
-//   movieList: MovieType[];
-// };
+type MovieType = {
+  setMovieList: Dispatch<SetStateAction<MovieType[]>>;
+  movieList: MovieType[];
+};
 
-// type MovieListPropsType = {  setMovieList: Dispatch<SetStateAction<MovieType[]>>;  movieList: MovieType[];};
-
-
+type MovieListPropsType = {  setMovieList: Dispatch<SetStateAction<MovieType[]>>;  movieList: MovieType[];};
 
 
 
-export const UpcomingMovieList = (props: MovieListPropsType) => {
 
+
+export const UpcomingMovieList = (props:MovieListPropsType) => {
  
   const [mainPageMoveis, setMainPageMovie] = React.useState([])
 
 
-
-  const options = {
-    method: 'GET',
-    url: 'https://api.themoviedb.org/3/movie/now_playing',
-    params: {language: 'en-US', page: '1'},
-    headers: {accept: 'application/json'}
-  };
+  // const options = {
+  //   method: 'GET',
+  //   url: 'https://api.themoviedb.org/3/movie/now_playing',
+  //   params: {language: 'en-US', page: '1'},
+  //   headers: {accept: 'application/json'}
+  // };
   
 const getMainPageMovieList = async () => {
   const nowplaying = await instance.get("/movie/now_playing")

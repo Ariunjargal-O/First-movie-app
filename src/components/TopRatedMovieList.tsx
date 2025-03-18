@@ -50,6 +50,7 @@ export const TopRatedMovieList = (props: MovieListPropsType) => {
       <div className="px-(--spacing-5) w-full gap-(--spacing-5) flex justify-between ">
         <p className="text-2xl not-italic font-semibold leading-8">Top Rated</p>
 
+        <Link href={`/status/toprated`}>
         <Button variant="outline" className="max-w-26 ">
           <div className="flex">
             <span className="text-sm not-italic font-medium leading-4">
@@ -58,11 +59,12 @@ export const TopRatedMovieList = (props: MovieListPropsType) => {
             <ChevronRight />
           </div>
         </Button>
+        </Link>
       </div>
       <div className="px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2">
         {topRatedMovies.map((movie: MovieType) => {
           return (
-            <Link href={`${movie.id}`} key={movie.id}>
+            <Link href={`/movieDetails/${movie.id}`} key={movie.id}>
               <div key={movie.title} className="bg-[#F4F4F5] rounded-b-lg">
                 <div className="flex flex-col">
                   <img
