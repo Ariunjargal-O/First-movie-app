@@ -68,3 +68,16 @@ export type MovieDetailCreditType = {
   popularity: number;
   profile_path: string;
 };
+
+export type MovieTrailerType = {
+  id: string;
+  iso_639_1: string;
+  iso_3166_1: string;
+  key: string;
+  name: string;
+  official: boolean;
+  published_at: string;
+  site: string;
+  size: number;
+  type: string;
+};

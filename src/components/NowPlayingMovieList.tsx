@@ -1,3 +1,5 @@
+
+'use client';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { instance } from "../axios-instance/utils/axios-instance";
@@ -11,6 +13,7 @@ import { MovieType } from "../constants/Type";
 import { Button } from "../components/ui/button";
 import { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 type MovieListPropsType = {
   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
   movieList: MovieType[];
@@ -18,7 +21,7 @@ type MovieListPropsType = {
 
 export const NowplayingMovieList = (props: MovieListPropsType) => {
   const [nowPlaying, setNowPlayingMovie] = useState([]);
-
+const params = useParams()
   // const options = {
   //   method: 'GET',
   //   url: 'https://api.themoviedb.org/3/movie/now_playing',
@@ -53,7 +56,7 @@ export const NowplayingMovieList = (props: MovieListPropsType) => {
           {nowPlaying.map((movie: MovieType) => {
             return (
               <CarouselItem key={movie.id}>
-                <Link href={`${movie.id}`}>
+                <Link href={`/movieDetails/${movie.id}`}>
                   <div>
                     <div className="flex flex-col w-auto">
                       <img
@@ -86,11 +89,14 @@ export const NowplayingMovieList = (props: MovieListPropsType) => {
                           {movie.overview}
                         </p>
 
-                        <Button className="mt-4">
+                        <Link href={`/trailer/${movie.id}`}>
                           {" "}
-                          <img src="icon-play.png" />
-                          Watch Trailer
-                        </Button>
+                          <Button className="mt-4">
+                            {" "}
+                            <img src="icon-play.png" />
+                            Watch Trailer
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </div>

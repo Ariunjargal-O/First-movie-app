@@ -1,3 +1,4 @@
+'use client'
 import { instance } from "@/axios-instance/utils/axios-instance";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,16 +11,16 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export const MoreLike = () => {
+const MoreLikePage = () => {
   const params = useParams();
-  // console.log(params)
   const [moreLikeList, setMoreLikeList] = useState<MovieDetailType[]>();
-
+  console.log(params)
   const getMoreLikeMovieList = async () => {
     const moreLikeMovieList = await instance.get(
-      `/movie/${params.id}/similar?language=en-US&page=1`
+      `/movie/${params.id}/similar?language=en-US&page=`
     );
     // console.log(moreLikeMovieList);
+ 
     setMoreLikeList(moreLikeMovieList.data.results);
   };
 
@@ -28,15 +29,15 @@ export const MoreLike = () => {
   }, []);
 
   return (
+    
     <div>
-      <div>
+<div>
         <div>
           <div className="px-(--spacing-5) pt-8 w-full gap-(--spacing-5) flex justify-between ">
             <p className="text-2xl not-italic font-semibold leading-8">
               More like this
             </p>
 
-            <Link href={`/status/seeMore/${moreLikeList.}`}>
             <Button variant="outline" className="max-w-26 ">
               <div className="flex">
                 <span className="text-sm not-italic font-medium leading-4">
@@ -44,12 +45,12 @@ export const MoreLike = () => {
                 </span>
                 <ChevronRight />
               </div>
-            </Button></Link>
+            </Button>
           </div>
         </div>
       </div>
       <div className="px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2">
-        {moreLikeList?.map((movie: MovieDetailsType) => {
+        {moreLikeList?.map((movie: MovieDetailType) => {
           return (
             <Link href={`${movie.id}`} key={movie.id}>
               <div className="bg-[#F4F4F5] rounded-b-lg" key={movie.id}>
@@ -77,10 +78,10 @@ export const MoreLike = () => {
               </div>
             </Link>
           );
-        }).slice(0, 2)}  
+        })}  
       </div>
     </div>
   );
 };
+export default MoreLikePage;
 
-// zuvhun hoyrhon hesgiig hucheer haruulj bgaa. eniig scroll hiidg bolgoh

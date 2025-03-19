@@ -49,7 +49,7 @@ export const GenresList = () => {
         {genresLists.map((genres: GenresListType) => {
           return (
             <Link  key={`${genres.name}${genres.id}`}
-            href={`status/${genres.id}`}>
+            href={`/status/${genres.id}`+`?name=${genres.name}`}>
               <div
                 key={`${genres.name}${genres.id}`}
                 onClick={() => onHandle(genres.id)}

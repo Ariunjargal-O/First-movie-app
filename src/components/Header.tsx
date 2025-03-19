@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { GenresList } from "./GenresList";
 import { useState } from "react";
-import { Link } from "lucide-react";
+import Link from "next/link";
 
 // function vs functional component
 
@@ -25,12 +25,12 @@ export const Header = () => {
     <div>
       {!isOpen && (
         <div className="flex justify-between items-center h-[59px] px-(--spacing-5) ">
-          <div className="flex">
+         <Link href={`/`}> <div className="flex">
             <img src="icon-header-film.png" />
             <p className="text-[16px], text-indigo-700 italic ml-2 font-bold leading-[20px] tracking-[0.32px]">
               Movie Z
             </p>
-          </div>
+          </div></Link>
           <div className="flex gap-3">
             {!isOpen && (
               <Button
@@ -71,7 +71,7 @@ export const Header = () => {
           </div>{" "}
         </div>
       )}
-      <div className="fixed z-50">{isGenreListVisible && <GenresList />}</div>
+      <div className="fixed z-50">{isGenreListVisible && <GenresList/>}</div>
     </div>
   );
 };

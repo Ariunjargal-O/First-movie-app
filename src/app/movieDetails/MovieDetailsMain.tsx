@@ -4,12 +4,12 @@ import { Dispatch, SetStateAction } from "react";
 // import { MovieGanList } from "..components/MovieGenList";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ChevronRight, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ACCESS_TOKEN } from "@/constants";
 import { MovieDetailType } from "@/constants/Type";
 import { useParams } from "next/navigation";
 import { instance } from "@/axios-instance/utils/axios-instance";
+import Link from "next/link";
 
 type MovieListPropsType = {
   setMovieList: Dispatch<SetStateAction<MovieDetailType[]>>;
@@ -97,11 +97,13 @@ export const MovieDetailsMain = (props: Props) => {
         <div>
           <div className="flex flex-wrap">
             {openMovieDetail?.genres.map((g) => (
+              <Link href={`/status/${g.id}`} key={g.id}>
               <div key={g.id} className="">
                 <Button className="bg-white border-[#E4E4E7] border-1 rounded-4xl text-black font-semibold leading-4 text-[16px] m-1">
                   {g.name}
                 </Button>
               </div>
+              </Link>
             ))}
           </div>
           <p className="text-[16px] not-italic font-normal leading-6 pt-5">

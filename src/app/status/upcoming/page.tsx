@@ -1,7 +1,7 @@
 "use client";
 import { instance } from "@/axios-instance/utils/axios-instance";
 import { MovieType } from "@/constants/Type";
-import { Link } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const UpcomingListPage = () => {
@@ -29,7 +29,7 @@ const UpcomingListPage = () => {
         {upComingMovieList.map((movie: MovieType) => {
           return (
             <div key={movie.id}>
-              {/* <Link href={`/movieDetails/id${movie.id}`}> */}
+              <Link href={`/movieDetails/${movie.id}`}>
                 <div
                   key={movie.title}
                   className="bg-[#F4F4F5] rounded-b-lg flex flex-col"
@@ -54,7 +54,7 @@ const UpcomingListPage = () => {
                     </h1>
                   </div>
                 </div>
-              {/* </Link> */}
+              </Link>
             </div>
           );
         })}

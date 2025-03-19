@@ -10,7 +10,8 @@ import { MoreLike } from "../MoreLike";
 const MovieDetailsPage = () => {
   
   const params = useParams();
-  // console.log(params.id);
+
+  console.log(params.id);
   type Props = {
     id: string | undefined | string[];
   };
