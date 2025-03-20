@@ -6,6 +6,15 @@ import Link from "next/link";
 import { instance } from "@/axios-instance/utils/axios-instance";
 import { MovieType } from "@/constants/Type";
 import { BASE_IMAGE_URL } from "@/constants";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 
 const PopularListPage = () => {
   const [popularMovies, setPopularMovieList] = useState([]);

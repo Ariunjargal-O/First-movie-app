@@ -33,7 +33,7 @@ export const PopularMovieList = () => {
 
   return (
     <div>
-      {/* <MovieGanList movieList={props.movieList} /> */}
+
       <div className="px-(--spacing-5) w-full gap-(--spacing-5) flex justify-between ">
         <p className="text-2xl not-italic font-semibold leading-8">Popular</p>
 

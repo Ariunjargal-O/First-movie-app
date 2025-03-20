@@ -8,7 +8,7 @@ import { ChevronRight, Search } from "lucide-react";
 import { instance } from "@/axios-instance/utils/axios-instance";
 import { SearchList } from "./SearchList";
 import { useParams, useSearchParams } from "next/navigation";
-
+import { useMediaQuery } from "react-responsive"
 // function vs functional component
 
 /* <div className={`${searchButton == "none" ? "hidden" : "block"}`}> */
@@ -48,10 +48,19 @@ export const Header = () => {
     if (query || search) getSearch();
   }, [query, search]);
 
+
+  const isMobileQuery = useMediaQuery({ maxWidth: 639 });
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(isMobileQuery);
+  }, [isMobileQuery]);
   return (
     <div>
-      {!isOpen && (
-        <div className="flex justify-between items-center h-[59px] px-(--spacing-5) ">
+
+      {isMobile&& (
+        <div>
+          {!isOpen && (
+        <div className="flex justify-between items-center h-[59px] px-(--spacing-5) gap-2">
           <Link href={`/`}>
             {" "}
             <div className="flex">
@@ -80,7 +89,7 @@ export const Header = () => {
 
       {isOpen && (
         <div>
-          <div className="flex justify-between items-center h-[59px] px-(--spacing-5) gap-2">
+          <div className="flex justify-between items-center h-[59px] px-(--spacing-5) gap-2 ">
             <Button
               className=" bg-white w-8 h-8 p-2 border rounded-lg border-solid border-[#E4E4E7]  hover:bg-indigo-100 "
               onClick={handleGenre}
@@ -109,6 +118,14 @@ export const Header = () => {
           <SearchList res={searchMovieResult} />
         </div>
       )}
+        </div>
+      )}
+      {!isMobile &&(
+        <div>
+          
+        </div>
+      )}
+      
     </div>
   );
 };

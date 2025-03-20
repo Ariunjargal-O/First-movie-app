@@ -1,13 +1,16 @@
+import Link from "next/link";
+
 export const Footer = () => {
   return (
     <div className="bg-indigo-700 p-(--spacing-5)">
       <div>
+        <Link href={`/`}>
         <div className="flex ">
-          <img src="icon-footer-film.png" />
+          <img src="/icon-footer-film.png" />
           <p className="text-[16px], text-[#FAFAFA] italic ml-2 font-bold leading-[20px] tracking-[0.32px]">
             Movie Z
           </p>
-        </div>
+        </div></Link>
         <p className="text-[#FAFAFA] text-[14px] font-normal leading-5 non-italic pt-4">
           © 2024 Movie Z. All Rights Reserved
         </p>

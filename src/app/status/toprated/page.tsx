@@ -5,6 +5,15 @@ import Link from "next/link";
 import { MovieType } from "@/constants/Type";
 import { instance } from "@/axios-instance/utils/axios-instance";
 import { BASE_IMAGE_URL } from "@/constants";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 
 type MovieListPropsType = {
   setMovieList: Dispatch<SetStateAction<MovieType[]>>;

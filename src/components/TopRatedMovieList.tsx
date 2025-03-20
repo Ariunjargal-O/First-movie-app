@@ -1,7 +1,6 @@
 "use client";
 import { Dispatch, SetStateAction } from "react";
 import { MovieType } from "../constants/Type";
-import { MovieGanList } from "./MovieGenList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ACCESS_TOKEN, BASE_IMAGE_URL } from "../constants";
@@ -9,6 +8,7 @@ import { instance } from "../axios-instance/utils/axios-instance";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+
 
 type MovieListPropsType = {
   setMovieList: Dispatch<SetStateAction<MovieType[]>>;

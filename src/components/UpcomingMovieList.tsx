@@ -1,20 +1,20 @@
 "use client";
 import { Dispatch, SetStateAction } from "react";
 import { MovieType } from "../constants/Type";
-// import { MovieGanList } from "..components/MovieGenList";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { ACCESS_TOKEN } from "../constants";
+import { ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type MovieListPropsType = {
   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
   movieList: MovieType[];
 };
 
-import axios from "axios";
-import { ACCESS_TOKEN } from "../constants";
-import { ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { MovieDetails } from "./MovieDetails";
+
+
 
 export const UpcomingMovieList = (props: MovieListPropsType) => {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
@@ -69,12 +69,15 @@ export const UpcomingMovieList = (props: MovieListPropsType) => {
               <Link href={`/movieDetails/${movie.id}`}>
                 <div
                   key={movie.title}
-                  className="bg-[#F4F4F5] rounded-b-lg flex flex-col"
+                  className="bg-[#F4F4F5] rounded-b-lg flex flex-col hover:bg-indigo-100 w-full items-center"
                 >
-                  <img
+
+            {/* <div className="w-full flex flex-col gap-2 items-center p-[10px] bg-slate-200 rounded-md cursor-pointer hover:bg-gray-300"> */}
+                  
+                  <div> <img
                     className="w-[157px] h-auto rounded-t-lg "
-                    src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                  />
+                    src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                  /></div>
 
                   <div className="p-(--spacing-2) gap-1  ">
                     <div className="flex gap-1 items-center">

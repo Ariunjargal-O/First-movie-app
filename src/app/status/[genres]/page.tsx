@@ -7,6 +7,15 @@ import { GenresListType, MovieType } from "@/constants/Type";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 
 type MovieListPropsType = {
   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
