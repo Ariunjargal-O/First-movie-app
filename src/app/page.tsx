@@ -17,10 +17,11 @@ export default function Home() {
 
   return (
     <div>
-      {/* <MovieDetails/> */}
       <div>
-        <NowplayingMovieList setMovieList={setMovieList} movieList={movieList} />
-        {/* <GenresList/> */}
+        <NowplayingMovieList
+          setMovieList={setMovieList}
+          movieList={movieList}
+        />
         <UpcomingMovieList setMovieList={setMovieList} movieList={movieList} />
         <TopRatedMovieList setMovieList={setMovieList} movieList={movieList} />
         <PopularMovieList />

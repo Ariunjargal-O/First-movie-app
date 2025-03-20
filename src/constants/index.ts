@@ -3,3 +3,5 @@ export const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmFlZjQwNDEzODJiOW
 export const BASE_URL = " https://api.themoviedb.org/3"
 
 export const BASE_IMAGE_URL = "https://image.tmdb.org/t/p"
+
+export const BASE_YOUTUBE_URL = "https://www.youtube.com/watch?v="

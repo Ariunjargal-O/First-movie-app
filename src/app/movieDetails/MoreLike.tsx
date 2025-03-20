@@ -36,8 +36,8 @@ export const MoreLike = () => {
               More like this
             </p>
 
-            <Link href={`/status/seeMore/${moreLikeList.}`}>
-            <Button variant="outline" className="max-w-26 ">
+            <Link href={`/status/seeMore/${params.id}`}>
+            <Button variant="outline" className="max-w-26 hover:bg-indigo-100">
               <div className="flex">
                 <span className="text-sm not-italic font-medium leading-4">
                   See more
@@ -49,7 +49,7 @@ export const MoreLike = () => {
         </div>
       </div>
       <div className="px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2">
-        {moreLikeList?.map((movie: MovieDetailsType) => {
+        {moreLikeList?.map((movie: MovieDetailType) => {
           return (
             <Link href={`${movie.id}`} key={movie.id}>
               <div className="bg-[#F4F4F5] rounded-b-lg" key={movie.id}>
@@ -61,7 +61,7 @@ export const MoreLike = () => {
 
                   <div className="p-(--spacing-2) gap-1  ">
                     <div className="flex gap-1 items-center">
-                      <img className="w-4 h-4" src="icon-star.png" />
+                      <img className="w-4 h-4" src="/icon-star.png" />
                       <p className="text-xs font-medium leading-4">
                         {movie.vote_average}
                       </p>

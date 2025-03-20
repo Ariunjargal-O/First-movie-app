@@ -81,3 +81,24 @@ export type MovieTrailerType = {
   size: number;
   type: string;
 };
+
+export type ChangeEvent = {
+  input: string
+}
+
+export type SearchMovietype = {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[]; 
+  id: number;
+  original_language: string;
+  orignal_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}

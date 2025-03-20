@@ -40,7 +40,7 @@ const PopularListPage = () => {
 
                   <div className="p-(--spacing-2) gap-1  ">
                     <div className="flex gap-1 items-center">
-                      <img className="w-4 h-4" src="icon-star.png" />
+                      <img className="w-4 h-4" src="/icon-star.png" />
                       <p className="text-xs font-medium leading-4">
                         {movie.vote_average}
                       </p>

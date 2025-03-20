@@ -38,7 +38,7 @@ export const PopularMovieList = () => {
         <p className="text-2xl not-italic font-semibold leading-8">Popular</p>
 
         <Link href={`/status/popular`}>
-        <Button variant="outline" className="max-w-26 ">
+        <Button variant="outline" className="max-w-26  hover:bg-indigo-100">
           <div className="flex">
             <span className="text-sm not-italic font-medium leading-4">
               See more
@@ -61,7 +61,7 @@ export const PopularMovieList = () => {
 
                 <div className="p-(--spacing-2) gap-1  ">
                   <div className="flex gap-1 items-center">
-                    <img className="w-4 h-4" src="icon-star.png" />
+                    <img className="w-4 h-4" src="/icon-star.png" />
                     <p className="text-xs font-medium leading-4">
                       {movie.vote_average}
                     </p>

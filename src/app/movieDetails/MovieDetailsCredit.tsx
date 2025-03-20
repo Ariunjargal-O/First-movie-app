@@ -18,7 +18,7 @@ export const MovieDetailsCredit = (props: Props) => {
     const credit = await instance.get(
       `/movie/${props.id}/credits?language=en-UÒ`
     );
-    console.log(credit);
+    // console.log(credit);
     setmovieCredit(credit.data.cast);
     setMovieCreditCrew(credit.data.crew);
   };

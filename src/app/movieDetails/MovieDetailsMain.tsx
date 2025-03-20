@@ -5,8 +5,8 @@ import { Dispatch, SetStateAction } from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
-import { ACCESS_TOKEN } from "@/constants";
-import { MovieDetailType } from "@/constants/Type";
+import { ACCESS_TOKEN, BASE_YOUTUBE_URL } from "@/constants";
+import { MovieDetailType, MovieTrailerType } from "@/constants/Type";
 import { useParams } from "next/navigation";
 import { instance } from "@/axios-instance/utils/axios-instance";
 import Link from "next/link";
@@ -14,26 +14,32 @@ import Link from "next/link";
 type MovieListPropsType = {
   setMovieList: Dispatch<SetStateAction<MovieDetailType[]>>;
   movieList: MovieDetailType[];
-};
-
-type Props = MovieListPropsType & {
   id: string | undefined | string[];
 };
 
-export const MovieDetailsMain = (props: Props) => {
+
+// type MovieListPropsType = {
+//   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
+//   movieList: MovieType[];
+// };
+// type Props = MovieListPropsType & {
+//   id: string | undefined | string[];
+// };
+
+export const MovieDetailsMain = (props: MovieListPropsType) => {
   const [openMovieDetail, setopenMovieDetail] = useState<MovieDetailType>();
   const params = useParams();
   // console.log(params.id);
 
-  const options = {
-    method: "GET",
-    url: "https://api.themoviedb.org/3/movie/movie_id",
-    params: { language: "en-US" },
-    headers: {
-      accept: "application/json",
-      Authorization: "Bearer ",
-    },
-  };
+  // const options = {
+  //   method: "GET",
+  //   url: "https://api.themoviedb.org/3/movie/movie_id",
+  //   params: { language: "en-US" },
+  //   headers: {
+  //     accept: "application/json",
+  //     Authorization: "Bearer ",
+  //   },
+  // };
 
   const getMovieDetail = async () => {
     const movieDetail = await instance.get(`movie/${params.id}?language=en-US`);
@@ -43,6 +49,26 @@ export const MovieDetailsMain = (props: Props) => {
   useEffect(() => {
     getMovieDetail();
   }, []);
+
+
+    const [trailer, setTrailer] = useState<MovieTrailerType[]>([]);
+
+    const getMovieTrailer = async () => {
+      const movieTrailer = await instance.get(
+        `/movie/${params.id}/videos?language=en-UÒ`
+      );
+      // console.log(movieTrailer);
+      setTrailer(movieTrailer.data.results);
+    };
+  
+    useEffect(() => {
+      getMovieTrailer();
+    }, []);
+    
+  
+    const officialTrailer = trailer.find(
+      (res) => res.type === "Trailer" && "Teaser" || res.name === "Official Trailer"
+    );
 
   return (
     <div>
@@ -56,7 +82,7 @@ export const MovieDetailsMain = (props: Props) => {
           </p>
         </div>
         <div className="flex items-center gap-1">
-          <img className="w-7 h-7" src="icon-star.png" />
+          <img className="w-7 h-7" src="/icon-star.png" />
           <div className="flex flex-col text-center">
             <div className="flex">
               <p className="text-3 font-medium leading-4">
@@ -79,9 +105,10 @@ export const MovieDetailsMain = (props: Props) => {
           src={`https://image.tmdb.org/t/p/original/${openMovieDetail?.backdrop_path}`}
         ></img>
         <div className=" absolute flex justify-between bottom-3 left-3 gap-3 items-center">
-          <Button className="bg-white border-[1px] border-black rounded-full hover:bg-indigo-400 w-20">
-            <img className="w-6 h-6" src="icon-black-play.png"></img>
-          </Button>
+          <Link href={`${BASE_YOUTUBE_URL}${officialTrailer?.key}`}>
+          <Button className="bg-white border-[1px] border-black rounded-sm w-20  hover:bg-indigo-200">
+            <img className="w-6 h-6" src="/icon-black-play.png"></img>
+          </Button></Link>
           <p className="text-[16px] not-italic font-normal leading-6 text-white ">
             Play Trailer
           </p>
@@ -99,7 +126,7 @@ export const MovieDetailsMain = (props: Props) => {
             {openMovieDetail?.genres.map((g) => (
               <Link href={`/status/${g.id}`} key={g.id}>
               <div key={g.id} className="">
-                <Button className="bg-white border-[#E4E4E7] border-1 rounded-4xl text-black font-semibold leading-4 text-[16px] m-1">
+                <Button className="bg-white border-[#E4E4E7] border-1 rounded-4xl text-black font-semibold leading-4 text-[16px] m-1  hover:bg-indigo-100">
                   {g.name}
                 </Button>
               </div>

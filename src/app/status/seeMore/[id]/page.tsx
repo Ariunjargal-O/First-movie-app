@@ -17,7 +17,7 @@ const MoreLikePage = () => {
   console.log(params)
   const getMoreLikeMovieList = async () => {
     const moreLikeMovieList = await instance.get(
-      `/movie/${params.id}/similar?language=en-US&page=`
+      `/movie/${params.id}/similar?language=en-US&page=1`
     );
     // console.log(moreLikeMovieList);
  
@@ -52,7 +52,7 @@ const MoreLikePage = () => {
       <div className="px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2">
         {moreLikeList?.map((movie: MovieDetailType) => {
           return (
-            <Link href={`${movie.id}`} key={movie.id}>
+            <Link href={`/movieDetails/${movie.id}`} key={movie.id}>
               <div className="bg-[#F4F4F5] rounded-b-lg" key={movie.id}>
                 <div className="flex flex-col">
                   <img
@@ -62,7 +62,7 @@ const MoreLikePage = () => {
 
                   <div className="p-(--spacing-2) gap-1  ">
                     <div className="flex gap-1 items-center">
-                      <img className="w-4 h-4" src="icon-star.png" />
+                      <img className="w-4 h-4" src="/icon-star.png" />
                       <p className="text-xs font-medium leading-4">
                         {movie.vote_average}
                       </p>

@@ -56,10 +56,10 @@ export const GenresList = () => {
               >
                 <div>
                 <Button
-                    className="bg-white border-[#E4E4E7] border-1 rounded-4xl text-black"
+                    className="bg-white border-[#E4E4E7] border-1 rounded-4xl text-black  hover:bg-indigo-100"
                   >
                     {genres.name}
-                    <img className="w-3 h-3" src="icon-arrow-right.png" />
+                    <img className="w-3 h-3" src="/icon-arrow-right.png" />
                   </Button>
                 </div>
               </div>
