@@ -1,26 +1,17 @@
 "use client";
-import { Dispatch, SetStateAction } from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { MovieType } from "@/constants/Type";
 import { instance } from "@/axios-instance/utils/axios-instance";
 import { BASE_IMAGE_URL } from "@/constants";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination"
+
 
 // type MovieListPropsType = {
 //   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
 //   movieList: MovieType[];
 // };
 
-const TopRatedListPage = () => {
+export default function TopRatedListPage()  {
   const [topRatedMovies, setTopRatedMovieList] = useState<MovieType[]>([]);
 
   const getTopRatedMovieList = async () => {
@@ -70,5 +61,5 @@ const TopRatedListPage = () => {
     </div>
   );
 };
-export default TopRatedListPage;
+
 
