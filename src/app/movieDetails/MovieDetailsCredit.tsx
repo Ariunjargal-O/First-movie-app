@@ -55,9 +55,9 @@ export const MovieDetailsCredit = (props: Props) => {
         <div className="flex justify-between items-center ">
           <p className="text-[16px] not-italic font-bold leading-7">Stars</p>
           <p className="text-[16px] not-italic font-normal leading-4 flex ">
-            {/* {movieCredit?.map(
+            {movieCredit?.map(
               (cast) => cast.known_for_department === "Acting" && cast.name
-            ).slice(0, 3)} */}
+            ).slice(0, 3)}
             {
               movieCredit?.find(
                 (cast) => cast.known_for_department === "Acting"
