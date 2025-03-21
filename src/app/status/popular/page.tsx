@@ -1,22 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import Link from "next/link";
 import { instance } from "@/axios-instance/utils/axios-instance";
 import { MovieType } from "@/constants/Type";
 import { BASE_IMAGE_URL } from "@/constants";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination"
-
-const PopularListPage = () => {
+export default function PopularListPage ()  {
   const [popularMovies, setPopularMovieList] = useState([]);
 
   const getPopularMovieList = async () => {
@@ -31,7 +20,6 @@ const PopularListPage = () => {
 
   return (
     <div>
-      {/* <MovieGanList movieList={props.movieList} /> */}
       <div className="px-(--spacing-5) w-full gap-(--spacing-5) flex justify-between ">
         <p className="text-2xl not-italic font-semibold leading-8">Popular</p>
       </div>
@@ -70,5 +58,3 @@ const PopularListPage = () => {
     </div>
   );
 };
-
-export default PopularListPage;

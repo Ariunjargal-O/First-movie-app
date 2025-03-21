@@ -1,15 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import Link from "next/link";
 import { MovieType } from "@/constants/Type";
 import { instance } from "@/axios-instance/utils/axios-instance";
 import { BASE_IMAGE_URL } from "@/constants";
 
 
-// type MovieListPropsType = {
-//   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
-//   movieList: MovieType[];
-// };
+
 
 export default function TopRatedListPage()  {
   const [topRatedMovies, setTopRatedMovieList] = useState<MovieType[]>([]);

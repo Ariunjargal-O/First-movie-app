@@ -3,18 +3,9 @@ import { instance } from "@/axios-instance/utils/axios-instance";
 import { MovieType } from "@/constants/Type";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination"
-import { useRouter } from "next/compat/router";
 
-const UpcomingListPage = () => {
+
+export default function UpcomingListPage  ()  {
   const [upComingMovieList, setUpcomingMovieList] = useState<MovieType[]>([]);
 
   const getUpComingMovie = async () => {
@@ -74,46 +65,3 @@ return (
   </div>
 );
 };
-
-export default UpcomingListPage;
-
-
-
-  // const currentPage = 1; // Fetch from URL or state
-  // const totalPages = 10; // Fetch from API or state 
-  // currentPage={currentPage} totalPages={totalPages} 
-  // const router = useRouter();
-  // const handlePageChange = (page) => {
-  //   router.push(`?page=${page}`);
-// };
-// {/* <Pagination>
-// <PaginationContent>
-//   {/* Previous Button */}
-//   <PaginationItem>
-//     <PaginationPrevious
-//       onClick={() => handlePageChange(currentPage - 1)}
-//       disabled={currentPage === 1}
-//     />
-//   </PaginationItem>
-
-//   {/* Page Numbers */}
-//   {Array.from({ length: totalPages }, (_, i) => (
-//     <PaginationItem key={i + 1}>
-//       <PaginationLink
-//         onClick={() => handlePageChange(i + 1)}
-//         isActive={currentPage === i + 1}
-//       >
-//         {i + 1}
-//       </PaginationLink>
-//     </PaginationItem>
-//   ))}
-
-//   {/* Next Button */}
-//   <PaginationItem>
-//     <PaginationNext
-//       onClick={() => handlePageChange(currentPage + 1)}
-//       disabled={currentPage === totalPages}
-//     />
-//   </PaginationItem>
-// </PaginationContent>
-// </Pagination> */}
