@@ -21,9 +21,7 @@ const MovieDetailsPage = () => {
   const [movieList, setMovieList] = useState<MovieDetailType[]>([]);
   return (
     <div>
-      <MovieDetailsMain id={movieId}
-      movieList={movieList}
-      setMovieList={setMovieList}/>
+      <MovieDetailsMain id={params.id}/>
       <MovieDetailsCredit id={movieId} />
       <MoreLike />
     </div>

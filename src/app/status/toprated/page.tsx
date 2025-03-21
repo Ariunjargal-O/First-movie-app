@@ -40,6 +40,7 @@ const TopRatedListPage = () => {
       <div className="px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2">
         {topRatedMovies.map((movie: MovieType) => {
           return (
+            <Link href={`${movie.id}`} key={movie.id}>
             <div key={movie.title} className="bg-[#F4F4F5] rounded-b-lg">
               <div className="flex flex-col">
                 <img
@@ -62,7 +63,7 @@ const TopRatedListPage = () => {
                   </h1>
                 </div>
               </div>
-            </div>
+            </div></Link>
           );
         })}
       </div>

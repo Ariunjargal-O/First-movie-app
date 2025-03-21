@@ -1,10 +1,8 @@
 "use client";
 import { Dispatch, SetStateAction } from "react";
-
-// import { MovieGanList } from "..components/MovieGenList";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ACCESS_TOKEN, BASE_YOUTUBE_URL } from "@/constants";
+import { BASE_YOUTUBE_URL } from "@/constants";
 import { MovieDetailType, MovieTrailerType } from "@/constants/Type";
 import { useParams } from "next/navigation";
 import { instance } from "@/axios-instance/utils/axios-instance";
@@ -16,15 +14,13 @@ type MovieListPropsType = {
   id: string | undefined | string[];
 };
 
-
-// type MovieListPropsType = {
-//   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
-//   movieList: MovieType[];
-//   id: string | undefined | string[];
-// };
-type Props = MovieListPropsType & {
+type Props = {
   id: string | undefined | string[];
 };
+
+// type Props = MovieListPropsType & {
+//   id: string | undefined | string[];
+// };
 
 export const MovieDetailsMain = (props:Props) => {
   const [openMovieDetail, setopenMovieDetail] = useState<MovieDetailType>();
