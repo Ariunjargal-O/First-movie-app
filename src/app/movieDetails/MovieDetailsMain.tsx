@@ -8,11 +8,11 @@ import { useParams } from "next/navigation";
 import { instance } from "@/axios-instance/utils/axios-instance";
 import Link from "next/link";
 
-type MovieListPropsType = {
-  setMovieList: Dispatch<SetStateAction<MovieDetailType[]>>;
-  movieList: MovieDetailType[];
-  id: string | undefined | string[];
-};
+// type MovieListPropsType = {
+//   setMovieList: Dispatch<SetStateAction<MovieDetailType[]>>;
+//   movieList: MovieDetailType[];
+//   id: string | undefined | string[];
+// };
 
 type Props = {
   id: string | undefined | string[];
@@ -22,7 +22,7 @@ type Props = {
 //   id: string | undefined | string[];
 // };
 
-export const MovieDetailsMain = (props:Props) => {
+export const MovieDetailsMain = (props: Props) => {
   const [openMovieDetail, setopenMovieDetail] = useState<MovieDetailType>();
   const params = useParams();
   // console.log(params.id);
@@ -44,7 +44,7 @@ export const MovieDetailsMain = (props:Props) => {
   };
   useEffect(() => {
     getMovieDetail();
-  }, []);
+  }, [params.id]);
 
 
     const [trailer, setTrailer] = useState<MovieTrailerType[]>([]);
@@ -59,7 +59,7 @@ export const MovieDetailsMain = (props:Props) => {
   
     useEffect(() => {
       getMovieTrailer();
-    }, []);
+    }, [params.id]);
     
   
     const officialTrailer = trailer.find(

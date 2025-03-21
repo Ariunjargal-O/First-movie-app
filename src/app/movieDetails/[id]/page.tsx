@@ -7,25 +7,16 @@ import { MoreLike } from "../MoreLike";
 import { useState } from "react";
 import { MovieDetailType } from "@/constants/Type";
 
-
-
 const MovieDetailsPage = () => {
-  
   const params = useParams();
-  // console.log(params.id);
-
-  // type Props = {
-  //   id: string | undefined | string[];
-  // };
-  const movieId = params.id as string; 
-  const [movieList, setMovieList] = useState<MovieDetailType[]>([]);
+  const movieId = params.id as string;
+  
   return (
     <div>
-      <MovieDetailsMain id={params.id}/>
+      <MovieDetailsMain id={params.id} />
       <MovieDetailsCredit id={movieId} />
       <MoreLike />
     </div>
   );
 };
-
 export default MovieDetailsPage;
