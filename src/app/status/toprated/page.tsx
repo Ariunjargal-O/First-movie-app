@@ -15,13 +15,13 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
-type MovieListPropsType = {
-  setMovieList: Dispatch<SetStateAction<MovieType[]>>;
-  movieList: MovieType[];
-};
+// type MovieListPropsType = {
+//   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
+//   movieList: MovieType[];
+// };
 
-const TopRatedListPage = (props: MovieListPropsType) => {
-  const [topRatedMovies, setTopRatedMovieList] = useState([]);
+const TopRatedListPage = () => {
+  const [topRatedMovies, setTopRatedMovieList] = useState<MovieType[]>([]);
 
   const getTopRatedMovieList = async () => {
     const topRatedMovieList = await instance.get(`/movie/top_rated`);
@@ -69,5 +69,5 @@ const TopRatedListPage = (props: MovieListPropsType) => {
     </div>
   );
 };
-
 export default TopRatedListPage;
+

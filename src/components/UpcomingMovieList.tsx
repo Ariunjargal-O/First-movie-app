@@ -13,9 +13,6 @@ type MovieListPropsType = {
   movieList: MovieType[];
 };
 
-
-
-
 export const UpcomingMovieList = (props: MovieListPropsType) => {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
 
@@ -62,40 +59,37 @@ export const UpcomingMovieList = (props: MovieListPropsType) => {
           </Button>
         </Link>
       </div>
-      <div className="min px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2 ">
+      <div className="px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2 ">
         {upcomingMovies.map((movie: MovieType) => {
           return (
-            <div key={movie.id}>
-              <Link href={`/movieDetails/${movie.id}`}>
-                <div
-                  key={movie.title}
-                  className="bg-[#F4F4F5] rounded-b-lg flex flex-col hover:bg-indigo-100 w-full items-center"
-                >
-
-            {/* <div className="w-full flex flex-col gap-2 items-center p-[10px] bg-slate-200 rounded-md cursor-pointer hover:bg-gray-300"> */}
-                  
-                  <div> <img
+            <Link href={`/movieDetails/${movie.id}`} key={movie.id}>
+              <div
+                key={movie.title}
+                className="bg-[#F4F4F5] rounded-b-lg flex flex-col hover:bg-indigo-100 w-full items-center rounded-t-lg cursor-pointer pt-(--spacing-2)"
+              >
+                <div className="flex justify-center flex-col">
+                  <img
                     className="w-[157px] h-auto rounded-t-lg "
                     src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                  /></div>
-
-                  <div className="p-(--spacing-2) gap-1  ">
-                    <div className="flex gap-1 items-center">
-                      <img className="w-4 h-4" src="/icon-star.png" />
-                      <p className="text-xs font-medium leading-4">
-                        {movie.vote_average}
-                      </p>
-                      <span className="text-xs font-normal leading-4 text-(--text-text-muted-foreground)">
-                        /10
-                      </span>
-                    </div>
-                    <h1 className=" text-[14px] font-normal leading-5 not-italic text-ellipsis  pt-1">
-                      {movie.title}
-                    </h1>
-                  </div>
+                  />
                 </div>
-              </Link>
-            </div>
+
+                <div className="p-(--spacing-2) gap-1  ">
+                  <div className="flex gap-1 items-center">
+                    <img className="w-4 h-4" src="/icon-star.png" />
+                    <p className="text-xs font-medium leading-4">
+                      {movie.vote_average}
+                    </p>
+                    <span className="text-xs font-normal leading-4 text-(--text-text-muted-foreground)">
+                      /10
+                    </span>
+                  </div>
+                  <h1 className=" text-[14px] font-normal leading-5 not-italic text-ellipsis  pt-1">
+                    {movie.title}
+                  </h1>
+                </div>
+              </div>
+            </Link>
           );
         })}
       </div>

@@ -11,10 +11,10 @@ const MovieDetailsPage = () => {
   
   const params = useParams();
 
-  console.log(params.id);
-  type Props = {
-    id: string | undefined | string[];
-  };
+  // console.log(params.id);
+  // type Props = {
+  //   id: string | undefined | string[];
+  // };
 
 
   return (

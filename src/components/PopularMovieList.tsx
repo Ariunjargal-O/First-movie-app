@@ -52,7 +52,7 @@ export const PopularMovieList = () => {
         {popularMovies.map((movie: MovieType) => {
           return (
             <Link href={`/movieDetails/${movie.id}`} key={movie.id}>
-            <div key={movie.title} className="bg-[#F4F4F5] rounded-b-lg">
+            <div key={movie.title} className="bg-[#F4F4F5] rounded-b-lg flex flex-col hover:bg-indigo-100 w-full items-center rounded-t-lg cursor-pointer pt-(--spacing-2)">
               <div className="flex flex-col">
                 <img
                   className="w-[157px] h-auto rounded-t-lg "

@@ -9,11 +9,11 @@ import { useEffect, useState } from "react";
 import React from "react";
 import YouTube, { YouTubeProps } from "react-youtube";
 
-type Props = {
-  type: string | undefined | string[];
-};
+// type Props = {
+//   type: string | undefined | string[];
+// };
 
-const TrailerPage = (props: Props) => {
+const TrailerPage = () => {
   const params = useParams();
   const [trailer, setTrailer] = useState<MovieTrailerType[]>([]);
 

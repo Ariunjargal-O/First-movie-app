@@ -4,11 +4,9 @@ import { MovieType } from "../constants/Type";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ACCESS_TOKEN, BASE_IMAGE_URL } from "../constants";
-import { instance } from "../axios-instance/utils/axios-instance";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
-
 
 type MovieListPropsType = {
   setMovieList: Dispatch<SetStateAction<MovieType[]>>;
@@ -18,15 +16,15 @@ type MovieListPropsType = {
 export const TopRatedMovieList = (props: MovieListPropsType) => {
   const [topRatedMovies, setTopRatedMovieList] = useState([]);
 
-  const options = {
-    method: "GET",
-    url: "https://api.themoviedb.org/3/movie/top_rated",
-    params: { language: "en-US", page: "1" },
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${ACCESS_TOKEN}`,
-    },
-  };
+  // const options = {
+  //   method: "GET",
+  //   url: "https://api.themoviedb.org/3/movie/top_rated",
+  //   params: { language: "en-US", page: "1" },
+  //   headers: {
+  //     accept: "application/json",
+  //     Authorization: `Bearer ${ACCESS_TOKEN}`,
+  //   },
+  // };
 
   const getTopRatedMovieList = async () => {
     const topRatedMovieList = await axios.get(
@@ -46,27 +44,29 @@ export const TopRatedMovieList = (props: MovieListPropsType) => {
 
   return (
     <div>
-      {/* <MovieGanList movieList={props.movieList} /> */}
       <div className="px-(--spacing-5) w-full gap-(--spacing-5) flex justify-between ">
         <p className="text-2xl not-italic font-semibold leading-8">Top Rated</p>
 
         <Link href={`/status/toprated`}>
-        <Button variant="outline" className="max-w-26  hover:bg-indigo-100 ">
-          <div className="flex">
-            <span className="text-sm not-italic font-medium leading-4">
-              See more
-            </span>
-            <ChevronRight />
-          </div>
-        </Button>
+          <Button variant="outline" className="max-w-26  hover:bg-indigo-100 ">
+            <div className="flex">
+              <span className="text-sm not-italic font-medium leading-4">
+                See more
+              </span>
+              <ChevronRight />
+            </div>
+          </Button>
         </Link>
       </div>
       <div className="px-(--spacing-5) py-(--spacing-8) w-full gap-(--spacing-5) grid grid-cols-2">
         {topRatedMovies.map((movie: MovieType) => {
           return (
             <Link href={`/movieDetails/${movie.id}`} key={movie.id}>
-              <div key={movie.title} className="bg-[#F4F4F5] rounded-b-lg">
-                <div className="flex flex-col">
+              <div
+                key={movie.title}
+                className="bg-[#F4F4F5] rounded-b-lg flex flex-col hover:bg-indigo-100 w-full items-center rounded-t-lg cursor-pointer pt-(--spacing-2)"
+              >
+                <div className="flex justify-center flex-col">
                   <img
                     className="w-[157px] h-auto rounded-t-lg "
                     src={`${BASE_IMAGE_URL}/w200${movie.poster_path}`}

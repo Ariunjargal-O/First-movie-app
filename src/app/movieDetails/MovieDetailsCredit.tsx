@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const MovieDetailsCredit = (props: Props) => {
-  const [movieCredit, setmovieCredit] = useState<MovieDetailCreditType[]>();
+  const [movieCredit, setmovieCredit] = useState<MovieDetailCreditType[]>([]);
   const [movieCreditCrew, setMovieCreditCrew] =
     useState<MovieDetailCreditType[]>();
   const params = useParams();
